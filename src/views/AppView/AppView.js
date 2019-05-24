@@ -3,25 +3,11 @@ export default class AppView {
     this.titles = titles;
   }
 
-  // render() {
-  //   const content = document.createElement('ul');
-  //   content.innerHTML = this.titles.map(title => `<li>${title}</li>`).join('');
-  //
-  //   document.body.appendChild(content);
-  // }
-}
+  render() {
+    const content = document.createElement('ul');
+    content.innerHTML = this.titles.map(titles => `<li>${titles}</li>`).join('');
+    // content.innerHTML = this.descr.map(title => `<li>${title}</li>`).join('');
 
-function printNews(news) {
-  let count = 5;
-  let output = "";
-  for (let i in news) {
-    output += `
-              <h4>${news[i].title}</h4>
-              <p>"${news[i].description}"</p>
-    
-    `;
-    count--;
-    if (count == i) break;
+    document.body.appendChild(content);
   }
-  return output;
 }

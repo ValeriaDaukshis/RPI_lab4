@@ -1,5 +1,6 @@
-import App from './controllers/App';
 
-const app = new App();
+import Application from './controllers/App';
+
+const app = new Application();
 
 app.start();
