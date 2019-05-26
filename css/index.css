@@ -1,18 +1,44 @@
-
-.FindByTag{
-    margin:0;
-    text-align: left;
+hr {
+    height: 2px;
+    background-color: black;
 }
+aside {
+    padding: 10px;
+    width: 200px;
+    float: right;
+
+}
+.AsideButtons{
+    font-size: large;
+    background: #f0f0f0;
+    border: 0;
+}
+aside p {
+    font-size: large;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f0f0f0;
+}
+article {
+    margin-right: 240px;
+    display: block;
+}
+.FindByTag{
+    text-align: right;
+    margin-right: 10%;
+}
+
 #resources img{
     margin: 0 30%
 }
 #resources p{
-    margin: 1% 30% 0 30%;
+    margin: 0 30% 3% 30%;
 }
 
 #search-field{
     width: 15%;
 }
 #load-btn{
-    width: 8%;
+    padding: 0 10px 0 10px;
+    margin-left: 40%;
 }

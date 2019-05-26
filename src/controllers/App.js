@@ -13,14 +13,19 @@ export default class Application {
     let data = await model.getAllData(this.state);
     model.processNewsResources(data);
 
+    document.querySelector('#search-btn')
+      .addEventListener('click', () => {
+        data = model.findSomeTopics();
+      });
+
     document.querySelector('#load-btn')
       .addEventListener('click', () => {
         model.processNewsResources(data);
       });
 
-    document.querySelector('#search-btn')
+    document.querySelector('#Business')
       .addEventListener('click', () => {
-        data = model.findSomeTopics();
+        model.LoadByCriterion('business');
       });
   }
 }

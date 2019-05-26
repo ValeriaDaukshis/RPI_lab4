@@ -8,6 +8,7 @@ export default class AppModel {
     const responce = await fetch(url);
     const data = responce.json();
     // this.maxNews = data.sources.length;
+
     return data;
   }
 
@@ -39,10 +40,30 @@ export default class AppModel {
       .then((data) => {
         this.loadedNews = 0;
         this.processNewsResources(data);
-        document.querySelector('#load-btn')
-          .addEventListener('click', () => {
-            this.processNewsResources(data);
-          });
+        this.UseLoadButton(data);
+        return data;
+      });
+  }
+
+  UseLoadButton(data) {
+    document.querySelector('#load-btn')
+      .addEventListener('click', () => {
+        this.processNewsResources(data);
+      });
+  }
+
+  async LoadByCriterion(topic) {
+    document.querySelector('#resources').innerHTML = '';
+    console.log();
+    this.state = `https://newsapi.org/v2/top-headlines?category=${topic}&country=us&apiKey=ceb1e4eee8704cc5aedb2b87fa3497f3`;
+
+    const request = new Request(this.state);
+    fetch(request)
+      .then(response => response.json())
+      .then((data) => {
+        this.loadedNews = 0;
+        this.processNewsResources(data);
+        this.UseLoadButton(data);
         return data;
       });
   }
