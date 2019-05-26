@@ -16,26 +16,10 @@ export default class AppModel {
     const content = document.querySelector('#resources');
     for (let i = this.loadedNews; i < this.loadedNews + 4; i++) {
       content.innerHTML += ` 
-                    <p align="center">${data.articles[i].title}</p>
-                    <img src="${data.articles[i].urlToImage}" width="600" height="400" align="center" alt = "picture"><br>
-                    <a href="${data.articles[i].url}" align="right">read more...</a>
-                                                    `;
-    }
-    // document.body.appendChild(content);
-    this.loadedNews += 4;
-    return data;
-  }
-
-  async Results(data) {
-    // const content = document.createElement('div');
-    const content = document.querySelector('#findResults');
-    for (let i = this.loadedNews; i < this.loadedNews + 4; i++) {
-      // if (i + 1 >= this.maxNews) break;
-
-      content.innerHTML += ` 
-                    <p align="center">${data.articles[i].title}</p>
-                    <img src="${data.articles[i].urlToImage}" width="600" height="400" align="center" alt = "picture"><br>
-                    <a href="${data.articles[i].url}" align="right">read more...</a>
+                    <h2 align="center">${data.articles[i].title}</h2>
+                    <img src="${data.articles[i].urlToImage}" width="600" height="400"  alt = "picture"><br>
+                    <p>${data.articles[i].content}
+                    <a href="${data.articles[i].url}">read more...</a></p>
                                                     `;
     }
     // document.body.appendChild(content);
@@ -44,7 +28,7 @@ export default class AppModel {
   }
 
   async findSomeTopics() {
-    document.querySelector('#resources').style.display = 'none';
+    document.querySelector('#resources').innerHTML = '';
     console.log();
     const topic = document.querySelector('#search-field').value;
     this.state = `https://newsapi.org/v2/everything?q=${topic}&apiKey=ceb1e4eee8704cc5aedb2b87fa3497f3&maxResults=15`;
@@ -54,10 +38,10 @@ export default class AppModel {
       .then(response => response.json())
       .then((data) => {
         this.loadedNews = 0;
-        this.Results(data);
+        this.processNewsResources(data);
         document.querySelector('#load-btn')
           .addEventListener('click', () => {
-            this.Results(data);
+            this.processNewsResources(data);
           });
         return data;
       });
