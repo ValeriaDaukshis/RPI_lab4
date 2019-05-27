@@ -6,12 +6,14 @@ aside {
     padding: 10px;
     width: 200px;
     float: right;
-
 }
 .AsideButtons{
     font-size: large;
     background: #f0f0f0;
     border: 0;
+}
+.AsideButtons:hover{
+    color: red;
 }
 aside p {
     font-size: large;
@@ -31,8 +33,11 @@ article {
 #resources img{
     margin: 0 30%
 }
+#resources h2{
+    margin: 0 21% 0 30%;
+}
 #resources p{
-    margin: 0 30% 3% 30%;
+    margin: 0 21% 3% 30%;
 }
 
 #search-field{

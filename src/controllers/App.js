@@ -1,31 +1,56 @@
 import AppModel from '../models/AppModel';
-// import AppView from '../views/AppView';
 
 export default class Application {
   constructor() {
-    this.state = {
-      url: 'https://newsapi.org/v2/top-headlines?country=us&apiKey=ceb1e4eee8704cc5aedb2b87fa3497f3&maxResults=15',
-    };
+    this.model = null;
   }
 
-  async start() {
-    const model = new AppModel(0);
-    let data = await model.getAllData(this.state);
-    model.processNewsResources(data);
+  DefaultNews() {
+    this.model = new AppModel(0);
+  }
+
+  start() {
+    this.DefaultNews();
+    this.model.getAllData();
 
     document.querySelector('#search-btn')
       .addEventListener('click', () => {
-        data = model.findSomeTopics();
-      });
-
-    document.querySelector('#load-btn')
-      .addEventListener('click', () => {
-        model.processNewsResources(data);
+        this.model.findSomeTopics();
       });
 
     document.querySelector('#Business')
       .addEventListener('click', () => {
-        model.LoadByCriterion('business');
+        this.model.LoadByCriterion('business');
+      });
+    document.querySelector('#Entertainment')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('entertainment');
+      });
+    document.querySelector('#General')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('general');
+      });
+    document.querySelector('#Health')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('health');
+      });
+    document.querySelector('#Science')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('science');
+      });
+
+    document.querySelector('#Sports')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('sports');
+      });
+    document.querySelector('#Technology')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('technology');
+      });
+
+    document.querySelector('#Everything')
+      .addEventListener('click', () => {
+        this.model.LoadByCriterion('');
       });
   }
 }
